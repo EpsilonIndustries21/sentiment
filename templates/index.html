@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sentiment Analysis - AI Text Analyzer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <h1 class="title">
+                    <i class="fas fa-brain"></i>
+                    Sentiment Analysis
+                </h1>
+                <p class="subtitle">AI-powered text sentiment analyzer using machine learning</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <div class="input-section">
+                <div class="input-container">
+                    <label for="text-input" class="input-label">
+                        <i class="fas fa-comment-alt"></i>
+                        Enter your text here
+                    </label>
+                    <textarea id="text-input" class="text-input"
+                        placeholder="Type or paste your text here to analyze its sentiment..." rows="4"></textarea>
+                    <div class="input-actions">
+                        <button id="analyze-btn" class="analyze-btn">
+                            <i class="fas fa-magic"></i>
+                            Analyze Sentiment
+                        </button>
+                        <button id="clear-btn" class="clear-btn">
+                            <i class="fas fa-trash"></i>
+                            Clear
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Loading Section -->
+            <div id="loading-section" class="loading-section hidden">
+                <div class="loading-spinner">
+                    <i class="fas fa-cog fa-spin"></i>
+                </div>
+                <p class="loading-text">Analyzing your text...</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results-section" class="results-section hidden">
+                <div class="results-header">
+                    <h2 class="results-title">
+                        <i class="fas fa-chart-bar"></i>
+                        Analysis Results
+                    </h2>
+                </div>
+
+                <div class="results-content">
+                    <!-- Sentiment Display -->
+                    <div class="sentiment-display">
+                        <div id="sentiment-icon" class="sentiment-icon">
+                            <i class="fas fa-question"></i>
+                        </div>
+                        <div class="sentiment-info">
+                            <h3 id="sentiment-text" class="sentiment-text">Analyzing...</h3>
+                            <p id="confidence-text" class="confidence-text">Confidence: --%</p>
+                        </div>
+                    </div>
+
+                    <!-- Confidence Bars -->
+                    <div class="confidence-bars">
+                        <div class="confidence-bar-container">
+                            <div class="confidence-label">
+                                <i class="fas fa-smile"></i>
+                                Positive
+                            </div>
+                            <div class="confidence-bar">
+                                <div id="positive-bar" class="confidence-fill positive-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="positive-percentage" class="confidence-percentage">0%</span>
+                        </div>
+
+                        <div class="confidence-bar-container">
+                            <div class="confidence-label">
+                                <i class="fas fa-frown"></i>
+                                Negative
+                            </div>
+                            <div class="confidence-bar">
+                                <div id="negative-bar" class="confidence-fill negative-fill" style="width: 0%"></div>
+                            </div>
+                            <span id="negative-percentage" class="confidence-percentage">0%</span>
+                        </div>
+                    </div>
+
+                    <!-- Original Text Display -->
+                    <div class="text-display">
+                        <h4 class="text-display-title">
+                            <i class="fas fa-file-alt"></i>
+                            Analyzed Text
+                        </h4>
+                        <div id="original-text" class="text-content"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Section -->
+            <div id="error-section" class="error-section hidden">
+                <div class="error-content">
+                    <i class="fas fa-exclamation-triangle"></i>
+                    <h3 id="error-title">Error</h3>
+                    <p id="error-message">Something went wrong</p>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>&copy; 2024 Sentiment Analysis. Powered by Machine Learning.</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+
+</html>
